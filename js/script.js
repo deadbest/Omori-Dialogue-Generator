@@ -12,7 +12,7 @@ function toggleInfo(idToggle, idLink) {
   console.log("toggled display!")
 };
 
-function togglePortrait(idCheckbox, idPortrait) {
+function toggleElement(idCheckbox, idPortrait) {
   let checkbox = document.getElementById(idCheckbox);
   let image = document.getElementById(idPortrait);
 
@@ -25,7 +25,7 @@ function togglePortrait(idCheckbox, idPortrait) {
   }
 };
 
-function clearPortrait(identifier) {
+function clearElement(identifier) {
   let image = document.getElementById(identifier);
   image.src = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=";
   image.nextElementSibling.value = null

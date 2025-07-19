@@ -11,65 +11,7 @@
 </head>
 
 <body>
-  <h1 id="title">Omori Script Generator</h1>
-  <div class="wrap-black">
-    <div class="wrap-white box" id="info-box">
-      <a id="toggle-link-info" href="#" onclick="toggleInfo('toggle-box-info', 'toggle-link-info')">
-        How to use? (show more)
-      </a>
-      <div id="toggle-box-info">
-        <ol>
-          <li>Select the desired settings below</li>
-
-          <li>Edit the contents of each of the boxes</li>
-          <ul>
-            <li>Character name is simple enough!
-              Just click on it and edit.
-            </li>
-
-            <li>Assuming portraits are enabled, just
-              click into the box and a file prompt
-              will open! You can find pictures to
-              use via the
-              <a href="https://github.com/Ransu-ll/Omori-Dialogue-Generator" target="_blank">
-                GitHub repository
-              </a>
-              and download the images you want to
-              use! Any 106px x 106px is ideal.
-              To make it easier, you can
-              <a href="https://download-directory.github.io/?url=https%3A%2F%2Fgithub.com%2FRansu-ll%2FOmori-Dialogue-Generator%2Ftree%2Fmaster%2FCharacter%2520Images" target="_blank">
-                download the folder here.
-              </a>
-            </li>
-            <li>
-              Dialogue is a little harder, however!
-
-              Ensure that you press enter if your
-              dialogue takes up more than one line
-              to allow it to render properly
-              (unless you like squished text)
-
-              Also ensure your dialogue takes up no
-              more than three lines to ensure it
-              renders properly.
-            </li>
-          </ul>
-
-          <li>Press the long "render" button.</li>
-
-          <li>Get the image</li>
-          <ul>
-            <li>Press the large download button that
-              will appear, or</li>
-            <li>Right click and copy image to clipboard!</li>
-          </ul>
-        </ol>
-      </div>
-      <hr>
-      Note: The whole input is only an
-      approximate to what will actually be rendered.
-    </div>
-  </div>
+  <h1 id="title">Omori Dialogue Generator</h1>
   <hr id="info-seperator">
 
   <form id="frame_0" class="speech-frame">
@@ -77,11 +19,20 @@
       <table>
         <tr>
           <td>
-            <input id="toggle_portrait_0" class="toggle-portrait" type="checkbox" name="enable-portrait" checked onclick="togglePortrait('toggle_portrait_0', 'char_img_0')">
+            <input id="toggle_bg_0" class="toggle-bg" type="checkbox" name="enable-bg" checked onclick="toggleElement('toggle_bg_0', 'bg_img_0')">
+            Enable Background?
+          </td>
+          <td>
+            <input type="button" name="clear-bg" value="Clear Background" onclick="clearElement('bg_img_0')">
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <input id="toggle_portrait_0" class="toggle-portrait" type="checkbox" name="enable-portrait" checked onclick="toggleElement('toggle_portrait_0', 'char_img_0')">
             Enable Portrait?
           </td>
           <td>
-            <input type="button" name="clear-portrait" value="Clear Portrait" onclick="clearPortrait('char_img_0')">
+            <input type="button" name="clear-portrait" value="Clear Portrait" onclick="clearElement('char_img_0')">
           </td>
         </tr>
         <tr>
@@ -96,6 +47,12 @@
       </table>
     </div>
 
+    <div class="screen-background">
+      <div class="wrap-black">
+        <img id="bg_img_0" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" class="wrap-white bg-pic box">
+        <input type="file" name="select-bg" class="bg-pic-button" onchange="displayPortrait(event, 'bg_img_0')" accept="image/*">
+      </div>
+    </div>
 
     <div class="top-half">
       <div class="char-name-wrapper">
@@ -118,11 +75,12 @@
       </div>
     </div>
     <br>
-    <input type="button" name="render" value="Render! (output will appear below)" onclick="renderCanvas('frame_0', 'download_0'); displayDownload('download_0')">
-    <canvas id="output_0" width="608" height="230"></canvas>
-    <a href="#" class="download" id="download_0" download="output.png">Download Image</a>
   </form>
-
+  <div>
+      <input type="button" name="render" value="Render! (output will appear below)" onclick="renderCanvas('frame_0', 'download_0'); displayDownload('download_0')">
+      <canvas id="output_0" width="640" height="480"></canvas>
+      <a href="#" class="download" id="download_0" download="output.png">Download Image</a>
+  </div>
 </body>
 
 </html>

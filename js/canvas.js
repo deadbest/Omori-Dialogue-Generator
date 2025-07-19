@@ -20,21 +20,27 @@ img_portrait.src = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHIAAAByCAYAAA
 function renderCanvas(idFrame, idDownload) {
 
   const frame = document.getElementById(idFrame);
-  let canvas = frame.getElementsByTagName("canvas")[0];
+  let canvas = document.getElementsByTagName("canvas")[0];
   canvas.style.display = "block";
   let ctx = canvas.getContext("2d");
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   let img_char = new Image();
+  let img_bg = new Image();
+
+  // Load Background
+  if (document.getElementsByClassName("toggle-bg")[0].checked) {
+    img_bg.src = frame.getElementsByTagName("img")[0].src;
+    ctx.fillStyle = "black";
+    ctx.fillRect(0, 0, 640, 480);
+    ctx.drawImage(img_bg, 0, 0, 640, 480);
+  }
 
   // Load character image and portrait box
   if (document.getElementsByClassName("toggle-portrait")[0].checked) {
-    img_char.src = frame.getElementsByTagName("img")[0].src;
-    ctx.drawImage(img_portrait, 494, 0);
-    ctx.drawImage(img_char, 499, 5, 104, 104);
+    img_char.src = frame.getElementsByTagName("img")[1].src;
+    ctx.drawImage(img_portrait, 515, 240);
+    ctx.drawImage(img_char, 520, 245, 104, 104);
   }
-  // Load dialogue box
-  ctx.drawImage(img_dialogue, 0, 118);
-
 
   // Load character name details
   let charName = document.getElementsByClassName("char-name")[0].value;
@@ -47,17 +53,28 @@ function renderCanvas(idFrame, idDownload) {
 
   // black outside
   ctx.fillStyle = "black";
-  ctx.fillRect(0, 70, fullRectangleWidth, 44);
+  ctx.fillRect(10, 310, fullRectangleWidth, 44);
   // white outside
   ctx.fillStyle = "white";
-  ctx.fillRect(1, 71, fullRectangleWidth - 2, 42);
+  ctx.fillRect(11, 311, fullRectangleWidth - 2, 42);
   // black inside
   ctx.fillStyle = "black";
-  ctx.fillRect(4, 74, fullRectangleWidth - 8, 36);
+  ctx.fillRect(14, 314, fullRectangleWidth - 8, 36);
 
   // Load character name
   ctx.fillStyle = "white";
-  ctx.fillText(charName, 12, 96);
+  ctx.fillText(charName, 23, 337);
+
+  // Load dialogue box
+  let dialogueWidth = canvas.width - 21
+  ctx.fillStyle = "black";
+  ctx.fillRect(10, 360, dialogueWidth, 110);
+  // white outside
+  ctx.fillStyle = "white";
+  ctx.fillRect(11, 361, dialogueWidth - 2, 108);
+  // black inside
+  ctx.fillStyle = "black";
+  ctx.fillRect(14, 364, dialogueWidth - 8, 102);
 
   // Load textarea
   let dialogue = document.getElementsByClassName("dialogue-box")[0].value;
@@ -71,7 +88,7 @@ function renderCanvas(idFrame, idDownload) {
     // Source/Adapted from: https://gh.princessrtfm.com/niko.html
     // Check out https://github.com/PrincessRTFM, they're hella huge brain
     // for the logic of this thing.
-    let yBase = 150; // Determined from doing some alignment in Paint.NET
+    let yBase = 395; // Determined from doing some alignment in Paint.NET
     let maxLineLength = 572; // Determined by same method
     let splitText = unsplitText.split("\n");
 
@@ -96,13 +113,13 @@ function renderCanvas(idFrame, idDownload) {
           }
         }
       }
-      context.fillText(line, 18, yBase + (29 * lineNo), maxLineLength);
+      context.fillText(line, 23, yBase + (29 * lineNo), maxLineLength);
     }
   }
 
   function changeDownloadLink() {
     let downloadLink = document.getElementById(idDownload);
-    canvas = frame.getElementsByTagName("canvas")[0];
+    canvas = document.getElementsByTagName("canvas")[0];
     downloadLink.href = canvas.toDataURL("image/png");
   }
 
