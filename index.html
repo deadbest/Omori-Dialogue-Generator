@@ -23,6 +23,9 @@
             Enable Background?
           </td>
           <td>
+            <input type="button" name="clear-bg" value="Select Background" onclick="selectBackground('bg_img_0')">
+          </td>
+          <td>
             <input type="button" name="clear-bg" value="Clear Background" onclick="clearElement('bg_img_0')">
           </td>
         </tr>
@@ -50,7 +53,7 @@
     <div class="screen-background">
       <div class="wrap-black">
         <img id="bg_img_0" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" class="wrap-white bg-pic box">
-        <input type="file" name="select-bg" class="bg-pic-button" onchange="displayPortrait(event, 'bg_img_0')" accept="image/*">
+        <input type="file" name="select-bg" class="bg-pic-button" onchange="displayElement(event, 'bg_img_0')" accept="image/*">
       </div>
     </div>
 
@@ -65,7 +68,7 @@
       <div class="char-pic-wrapper">
         <div class="wrap-black">
           <img id="char_img_0" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" class="wrap-white char-pic box">
-          <input type="file" name="select-character" class="char-pic-button" onchange="displayPortrait(event, 'char_img_0')" accept="image/*">
+          <input type="file" name="select-character" class="char-pic-button" onchange="displayElement(event, 'char_img_0')" accept="image/*">
         </div>
       </div>
     </div>
@@ -80,6 +83,11 @@
       <input type="button" name="render" value="Render! (output will appear below)" onclick="renderCanvas('frame_0', 'download_0'); displayDownload('download_0')">
       <canvas id="output_0" width="640" height="480"></canvas>
       <a href="#" class="download" id="download_0" download="output.png">Download Image</a>
+  </div>
+
+  <div class="overlay" id="imageOverlay">
+    <div class="close-btn" id="closeOverlay">&times;</div>
+    <div class="overlay-content" id="imageList"></div>
   </div>
 </body>
 
