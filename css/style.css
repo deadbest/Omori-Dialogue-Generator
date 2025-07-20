@@ -53,7 +53,7 @@ a {
     padding: 5px 10px;
     font-size: 22px;
     display: block;
-    width: 400px;
+    width: 618px;
 }
 
 #toggle-box-info {
@@ -66,8 +66,8 @@ a {
 }
 
 .speech-frame {
-    width: 648px;
-    height: 600px;
+    width: 640px;
+    height: 480px;
     display: grid;
     grid-template-rows: repeat(20, 1fr);
 }
@@ -101,7 +101,7 @@ a {
 .screen-background {
     grid-column-start: 1;
     grid-column-end: 2;
-    grid-row-start: 2;
+    grid-row-start: 1;
     grid-row-end: 10;
     z-index: 1;
 }
@@ -109,7 +109,6 @@ a {
 .bg-pic {
     width: 640px;
     height: 480px;
-    padding: 1px;
 }
 
 .bg-pic-button {
@@ -127,9 +126,10 @@ a {
     height: 124px;
     grid-column-start: 1;
     grid-column-end: 2;
-    grid-row-start: 18;
+    grid-row-start: 19;
     padding-left: 12px;
-    padding-right: 13px;
+    padding-right: 11px;
+    padding-bottom: 5px;
     display: grid;
     z-index: 2;
 }
@@ -184,15 +184,15 @@ a {
 .bottom-half {
     grid-column-start: 1;
     grid-column-end: 2;
-    grid-row-start: 19;
-    padding-bottom: 20px;
+    grid-row-start: 20;
+    padding-bottom: 5px;
     padding-left: 12px;
     padding-right: 10px;
     z-index: 3;
 }
 
 .wrap-black .dialogue-box {
-    width: 600px;
+    width: 595px;
     height: 96px;
 }
 
@@ -209,7 +209,7 @@ a {
 
 /*******/
 .download-wrapper {
-    height: 96px;
+    padding-top: 20px;
 }
 
 .images img {
